@@ -8,8 +8,6 @@ import {GoogleMap,
 
 const map = (props) => {
 
-    console.log(props.coordinates[0], props.coordinates[1]);
-
     const MapWrapped = withScriptjs(withGoogleMap( () => {
         return (
             <GoogleMap
