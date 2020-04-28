@@ -1,7 +1,7 @@
 import React from 'react';
-import Device from '../Device/Device';
+import Grid from '@material-ui/core/Grid';
+import Device from './Device/Device';
 import './Devices.css'
-
 
 const allDevices = props => {
 
@@ -9,17 +9,28 @@ const allDevices = props => {
 
     if(props.devices){
         devices = (
-        <div className="devices_container">
-            {props.devices.map(device => {
-                return <Device 
-                    device = {device}
-                    key = {device._id}
-                />
-            })}
+        <div>
+            <h1>Devices</h1>
+
+            <Grid
+                container
+                direction="row"
+                justify="flex-start"
+                alignItems="center">
+
+                {props.devices.map(device => {
+                    return <Device 
+                        device = {device}
+                        key = {device._id}
+                    />
+                })}
+                
+            </Grid>
         </div>
         )
+
     }else{
-        return <h3>No Devices</h3>
+        return <h2>No Devices</h2>
     }
 
     return devices ;

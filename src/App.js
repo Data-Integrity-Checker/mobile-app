@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Rounter, Switch, Route} from 'react-router-dom';
+import Box from '@material-ui/core/Box';
 import Navbar from './components/Navbar/Navbar';
 import Devices from './components/Devices/Devices';
 import Settings from './components/Settings/Settings'; 
-import Alerts from './components/Alerts/Alerts';
-import Details from './components/Details/Details';
+import Alerts from './components/Devices/Alerts/Alerts';
+import Details from './components/Devices/Details/Details';
 
 import './App.css';
 
@@ -29,7 +30,6 @@ class App extends React.Component {
           devices: responseData,
           lastUpdate: ""
        });
-       console.log(this.state.devices);
     })
     .catch((error) => {
         console.error(error);
@@ -42,12 +42,25 @@ class App extends React.Component {
       <Rounter>
         <div className="App">
           <Navbar/>
-          <Switch>
-            <Route path="/" exact component={() => <Devices devices={this.state.devices}/>}/>
-            <Route path="/alerts" component={Alerts}/>
-            <Route path="/settings" component={Settings}/>
-            <Route path="/device/:id" component={Details}/>
-          </Switch>
+
+          {/* <Grid
+            container
+            spacing={0}
+            direction="column"
+            alignItems="center"
+            style={{ minHeight: '100vh' }} > */}
+         
+         <Box justifyContent="center">
+            <Switch>
+              <Route path="/" exact component={() => <Devices devices={this.state.devices}/>}/>
+              <Route path="/alerts" component={Alerts}/>
+              <Route path="/settings" component={Settings}/>
+              <Route path="/device/:id" component={Details}/>
+            </Switch>
+          </Box>
+
+          {/* </Grid> */}
+
         </div>
       </Rounter>
     );

@@ -3,5 +3,6 @@
 }
 
 .Devices_Container {
-  display: inline;
+  margin: auto;
+  width: 50%;
 }

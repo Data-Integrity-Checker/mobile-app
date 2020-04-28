@@ -2,8 +2,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    min-height: 10vh;
-    background: rgb(73, 79, 82);
+    height: 10vh;
+    background: blue;
     color: white;
 }
 
@@ -13,6 +13,7 @@
     justify-content: space-around;
     align-items: center;
     list-style: none;
+    font-weight: bold;
 }
 
 .white{

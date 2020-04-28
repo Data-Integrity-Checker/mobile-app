@@ -1,13 +1,11 @@
 .device {
-    max-width: 500px;
-    border: 1px solid green;
+    width: 300px;
+    border: 2px solid green;
     background-color: lightgreen;
     box-shadow: 0 2px 3px #ccc;
     padding: 16px;
     border-radius: 25px;
-}
-
-.row{
-    display: flex;
-    color: black;
+    font-weight: bold;
+    color: #000000;
+    margin: 10px;
 }
