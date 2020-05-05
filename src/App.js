@@ -6,6 +6,7 @@ import Devices from './components/Devices/Devices';
 import Settings from './components/Settings/Settings'; 
 import Alerts from './components/Alerts/Alerts';
 import Details from './components/Devices/Details/Details';
+import MissingData from './components/Devices/Device/MissingData/MissingData';
 
 import './App.css';
 
@@ -66,7 +67,7 @@ class App extends React.Component {
           <Navbar alerts={this.state.alerts_number}/>
 
           {/* <Grid
-            container
+            container  
             spacing={0}
             direction="column"
             alignItems="center"
@@ -78,6 +79,7 @@ class App extends React.Component {
               <Route path="/alerts" component={Alerts}/>
               <Route path="/settings" component={Settings}/>
               <Route path="/device/:id" component={Details}/>
+              <Route path="/missingData/:id" component={MissingData}/>
             </Switch>
           </Box>
 

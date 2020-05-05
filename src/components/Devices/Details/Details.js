@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Map from './Map/Map';
 import Battery from './BatteryChar/BatteryChar';
+//import Alerts from './DeviceAlerts/DeviceAlerts';
   
 function DeviceDetails({match}) {
 
@@ -35,6 +36,7 @@ function DeviceDetails({match}) {
                 battery_history={details.battery_history} 
                 battery={details.battery}
             />
+            <h5>Alerts</h5>
         </div>
     );
 };

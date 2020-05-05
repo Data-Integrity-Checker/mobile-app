@@ -6,24 +6,27 @@ import './Device.css';
 const device = props => {
 
     return(
-        <Link to={`/device/${props.device._id}`}>
-            <div className='device'>
-                
+        <div className='device'>
+            
+            <Link to={`/device/${props.device._id}`}>
                 <div>ID:{props.device._id}</div>
-            
-                <div>Battery: {props.device.battery * 100}%</div>
-                <div>Missing Data Erros: {props.device.missing_data.length}</div>
-            
-                <div>Duplicate Data: {props.device.duplicate_data.length}</div>
-                <div>GPS Erros: {props.device.gps_errors}</div>
-            
-                <hr/>
+            </Link>
+        
+            <div>Battery: {props.device.battery * 100}%</div>
 
-                <div>Last Updated</div>
-                <Moment>{props.device.last_update}</Moment>
-                
-            </div>
-        </Link>
+            <Link to={`/missingData/${props.device._id}`}>
+                <div>Missing Data Erros: {props.device.missing_data.length}</div>
+            </Link>
+
+            <div>Duplicate Data: {props.device.duplicate_data.length}</div>
+            <div>GPS Erros: {props.device.gps_errors}</div>
+        
+            <hr/>
+
+            <div>Last Updated</div>
+            <Moment>{props.device.last_update}</Moment>
+            
+        </div>
     );
 }
 

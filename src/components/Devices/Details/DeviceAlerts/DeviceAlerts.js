@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom'
 import Alert from './Alert/Alert';
-
   
-function Alerts() {
+function DeviceAlerts() {
 
     useEffect(() => {
         fetchAlerts();
@@ -37,4 +36,4 @@ function Alerts() {
     );
 };
 
-export default Alerts;
+export default DeviceAlerts;
