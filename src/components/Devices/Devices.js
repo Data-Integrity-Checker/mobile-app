@@ -1,7 +1,6 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Device from './Device/Device';
-import './Devices.css'
 
 const allDevices = props => {
 

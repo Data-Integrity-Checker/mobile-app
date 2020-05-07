@@ -1,14 +1,16 @@
 import React from 'react';
+import './App.css';
 import { BrowserRouter as Rounter, Switch, Route} from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import Navbar from './components/Navbar/Navbar';
 import Devices from './components/Devices/Devices';
 import Settings from './components/Settings/Settings'; 
 import Alerts from './components/Alerts/Alerts';
-import Details from './components/Devices/Details/Details';
+import BatteryData from './components/Devices/Device/BatteryData/BatteryData';
 import MissingData from './components/Devices/Device/MissingData/MissingData';
+import DuplicateData from './components/Devices/Device/DuplicateData/DuplicateData';
+import GPSData from './components/Devices/Device/GPSData/GPSData'
 
-import './App.css';
 
 class App extends React.Component {
   
@@ -78,8 +80,10 @@ class App extends React.Component {
               <Route path="/" exact component={() => <Devices devices={this.state.devices}/>}/>
               <Route path="/alerts" component={Alerts}/>
               <Route path="/settings" component={Settings}/>
-              <Route path="/device/:id" component={Details}/>
+              <Route path="/batteryData/:id" component={BatteryData}/>
               <Route path="/missingData/:id" component={MissingData}/>
+              <Route path="/duplicateData/:id" component={DuplicateData}/>
+              <Route path="/gpsData/:id" component={GPSData}/>
             </Switch>
           </Box>
 

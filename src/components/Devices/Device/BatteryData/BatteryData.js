@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Map from './Map/Map';
-import Battery from './BatteryChar/BatteryChar';
+import Map from '../Map/Map';
+import Battery from './BatteryChar';
 //import Alerts from './DeviceAlerts/DeviceAlerts';
   
 function DeviceDetails({match}) {
@@ -14,7 +14,6 @@ function DeviceDetails({match}) {
             coordinates: {}
         },
         battery_history: [{}]
-
     });
 
     const fetchDetails = async () => {

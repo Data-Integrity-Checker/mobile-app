@@ -7,6 +7,7 @@ import MissingDataAlerts from './MissingDataAlerts';
 function MissingData({match}) {
 
     useEffect(() => {
+        setSortType("alert_time");
         fetchData();
     }, []);
 
