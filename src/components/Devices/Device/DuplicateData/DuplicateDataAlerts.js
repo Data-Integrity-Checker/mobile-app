@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 }));
   
 
-const MissingDataAlerts = props => {
+const DuplicateDataAlerts = props => {
 
   const classes = useStyles();
 
@@ -40,16 +40,13 @@ const MissingDataAlerts = props => {
    
   const alerts = props.data.map(alert => {
 
-      let difference = (new Date(alert.end) - new Date(alert.start)).toString() + " seconds lost";
-      let id = "ID: " + alert._id;
-
       return (
           <div className={classes.container}>
               <List className={classes.root}>
 
                   <ListItem>
-                      <ListItemText primary={id} secondary={moment(alert.start).format('MM/DD, hh:MM:ss')} />
-                      <ListItemText primary={difference} />
+                      <ListItemText primary={"ID: " + alert._id} />
+                      <ListItemText primary={moment(alert.start).format('MM/DD, hh:MM:ss')}  />
                       <Button onClick={alertInvestigate} variant="contained" className={classes.button}>Investigate</Button>
                   </ListItem>
 
@@ -63,4 +60,4 @@ const MissingDataAlerts = props => {
   return alerts;
 };
 
-export default MissingDataAlerts;
+export default DuplicateDataAlerts;

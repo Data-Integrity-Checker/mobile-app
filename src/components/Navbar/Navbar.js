@@ -13,7 +13,7 @@ const navbar = props => (
                 <li>Alerts ({props.alerts})</li>
             </Link>
             <Link className="white" to="/settings">
-                <li>Settigs</li>
+                <li>Settings</li>
             </Link>
         </ul>
     </nav>

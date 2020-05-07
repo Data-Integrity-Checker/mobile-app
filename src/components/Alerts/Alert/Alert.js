@@ -31,6 +31,12 @@ const SubheaderDividers = (props) => {
 
     const classes = useStyles();
 
+    const alertInvestigate = async () => {
+        await fetch(
+            `http://localhost:3000/alerts/investigate/${props.data._id}`
+        );
+    };
+
     return (
 
         <div className={classes.container}>
@@ -43,7 +49,7 @@ const SubheaderDividers = (props) => {
                 <ListItem>
                     <ListItemText primary={props.alert.name} secondary={moment(props.alert.timestamp).format('dddd, mm dS, h:MM:ss')} />
                     <ListItemText primary="Device ID" secondary={props.alert.deviceId} />
-                    <Button variant="contained" className={classes.button}>Dismiss</Button>
+                    <Button onClick={alertInvestigate} variant="contained" className={classes.button}>Dismiss</Button>
                 </ListItem>
                 
             </List>

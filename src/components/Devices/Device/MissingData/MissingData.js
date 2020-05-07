@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Map from '../Map/Map';
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -70,7 +71,7 @@ function MissingData({match}) {
 
     const fetchData = async () => {
         const fetchData = await fetch(
-            `http://localhost:3000/devices/alertType/missing_data/${match.params.id}`
+            `http://localhost:3000/alerts/missing_data/${match.params.id}`
         );
 
         const info = await fetchData.json();
@@ -79,9 +80,10 @@ function MissingData({match}) {
 
     return (
         <div>
+            
             <h3>Missing Data: {data.length}</h3>
 
-            Sort: 
+            Sort by: 
             <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
                 Alert Time
             </Button>
@@ -96,6 +98,8 @@ function MissingData({match}) {
                 <MenuItem onClick={handleAlertTimeSort} id="alert_time">Alert Time</MenuItem>
                 <MenuItem onClick={handleTimeLost} id ="time_lost">Time Lost</MenuItem>
             </Menu>
+
+            <Map id={match.params.id}/>
 
             <MissingDataAlerts data={data} />
         </div>

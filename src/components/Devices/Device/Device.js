@@ -8,22 +8,22 @@ const device = props => {
     return(
         <div className='device'>
             
-            <div>ID:{props.device._id}</div>
+            <div>ID: {props.device._id}</div>
         
             <Link to={`/batteryData/${props.device._id}`}>
-                <div>Battery: {props.device.battery * 100}%</div>
+                <div className="black">Battery: {props.device.battery * 100}%</div>
             </Link>
 
             <Link to={`/missingData/${props.device._id}`}>
-                <div>Missing Data Erros: {props.device.missing_data.length}</div>
+                <div className="black">Missing Data Errors: {props.device.missing_data.length}</div>
             </Link>
 
             <Link to={`/duplicateData/${props.device._id}`}>
-                <div>Duplicate Data: {props.device.duplicate_data.length}</div>
+                <div className="black">Duplicate Data: {props.device.duplicate_data.length}</div>
             </Link>
 
-            <Link to={`/gpsData/${props.device._id}`}>
-                <div>GPS Erros: {props.device.gps_errors}</div>
+            <Link to={`/gpsErrors/${props.device._id}`}>
+                <div className="black">GPS Errors: {props.device.gps_errors.length}</div>
             </Link>
 
             <hr/>

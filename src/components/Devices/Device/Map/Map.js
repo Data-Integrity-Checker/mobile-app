@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {GoogleMap, 
         withScriptjs, 
         withGoogleMap, 
@@ -6,15 +6,35 @@ import {GoogleMap,
     } from 'react-google-maps';
 // key: "AIzaSyAVTq9lBNRwnB0WhEQk7HsfWuYSGVOT3F0"
 
-const map = (props) => {
+export default function Map(props) {
+
+    useEffect(() => {
+        fetchDetails();
+    }, []);
+
+    const [device, setDevice] = useState({
+        location : {
+            coordinates: {}
+        },
+    });
+
+    const fetchDetails = async () => {
+
+        const fetchDetails = await fetch(
+            `http://localhost:3000/devices/${props.id}`
+        );
+
+        const info = await fetchDetails.json();
+        setDevice(info);
+    };
 
     const MapWrapped = withScriptjs(withGoogleMap( () => {
         return (
             <GoogleMap
                 defaultZoom={17}
-                defaultCenter={{lat: props.coordinates[1], lng:  props.coordinates[0]}}
+                defaultCenter={{lat: device.location.coordinates[1], lng:  device.location.coordinates[0]}}
             >
-                <Marker position={{lat: props.coordinates[1], lng: props.coordinates[0]}} />
+                <Marker position={{lat: device.location.coordinates[1], lng: device.location.coordinates[0]}} />
 
             </GoogleMap>
         );
@@ -31,5 +51,3 @@ const map = (props) => {
         </div>
     );
 }
-
-export default map;

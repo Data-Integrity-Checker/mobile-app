@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Rounter, Switch, Route} from 'react-router-dom';
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 import Navbar from './components/Navbar/Navbar';
 import Devices from './components/Devices/Devices';
 import Settings from './components/Settings/Settings'; 
@@ -9,7 +10,7 @@ import Alerts from './components/Alerts/Alerts';
 import BatteryData from './components/Devices/Device/BatteryData/BatteryData';
 import MissingData from './components/Devices/Device/MissingData/MissingData';
 import DuplicateData from './components/Devices/Device/DuplicateData/DuplicateData';
-import GPSData from './components/Devices/Device/GPSData/GPSData'
+import GPSErrors from './components/Devices/Device/GPSErrors/GPSErrors'
 
 
 class App extends React.Component {
@@ -31,7 +32,7 @@ class App extends React.Component {
   
   async getDevices(){
   
-   fetch('http://localhost:3000/devices/allDevices', {method: "GET"})
+   fetch('http://localhost:3000/devices/all', {method: "GET"})
     .then((response) => response.json())
     .then((responseData) =>
     {
@@ -46,7 +47,7 @@ class App extends React.Component {
 
   async getAlerts(){
   
-    fetch('http://localhost:3000/devices/allAlerts', {method: "GET"})
+    fetch('http://localhost:3000/alerts/all', {method: "GET"})
      .then((response) => response.json())
      .then((responseData) =>
      {
@@ -68,12 +69,12 @@ class App extends React.Component {
         <div className="App">
           <Navbar alerts={this.state.alerts_number}/>
 
-          {/* <Grid
+          <Grid
             container  
             spacing={0}
             direction="column"
             alignItems="center"
-            style={{ minHeight: '100vh' }} > */}
+            style={{ minHeight: '100vh' }} >
          
          <Box justifyContent="center">
             <Switch>
@@ -83,11 +84,11 @@ class App extends React.Component {
               <Route path="/batteryData/:id" component={BatteryData}/>
               <Route path="/missingData/:id" component={MissingData}/>
               <Route path="/duplicateData/:id" component={DuplicateData}/>
-              <Route path="/gpsData/:id" component={GPSData}/>
+              <Route path="/gpsErrors/:id" component={GPSErrors}/>
             </Switch>
           </Box>
 
-          {/* </Grid> */}
+          </Grid>
 
         </div>
       </Rounter>

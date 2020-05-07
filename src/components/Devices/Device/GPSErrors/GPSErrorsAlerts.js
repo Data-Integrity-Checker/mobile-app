@@ -26,41 +26,32 @@ const useStyles = makeStyles((theme) => ({
         align: "ceter"
     }
 }));
-  
 
-const MissingDataAlerts = props => {
+const DuplicateDataAlerts = props => {
 
-  const classes = useStyles();
+    const classes = useStyles();
 
     const alertInvestigate = async () => {
         await fetch(
             `http://localhost:3000/alerts/investigate/${props.data._id}`
         );
     };
-   
-  const alerts = props.data.map(alert => {
 
-      let difference = (new Date(alert.end) - new Date(alert.start)).toString() + " seconds lost";
-      let id = "ID: " + alert._id;
+    return (
+        <div className={classes.container}>
+            <List className={classes.root}>
 
-      return (
-          <div className={classes.container}>
-              <List className={classes.root}>
+                <Divider component="li" />
 
-                  <ListItem>
-                      <ListItemText primary={id} secondary={moment(alert.start).format('MM/DD, hh:MM:ss')} />
-                      <ListItemText primary={difference} />
-                      <Button onClick={alertInvestigate} variant="contained" className={classes.button}>Investigate</Button>
-                  </ListItem>
-
-                  <Divider component="li" />
-
-              </List>
-          </div>
-      );
-  })
-
-  return alerts;
+                <ListItem>
+                    <ListItemText primary={props.data._id} secondary={moment(props.data.start).format('MM/DD, hh:MM:ss')} />
+                    <ListItemText primary="Distance" secondary={Math.round(props.data.distance) + " Meters"}/>
+                    <Button onClick={alertInvestigate} variant="contained" className={classes.button}>Investigate</Button>
+                </ListItem>
+            
+            </List>
+        </div>
+    );
 };
 
-export default MissingDataAlerts;
+export default DuplicateDataAlerts;

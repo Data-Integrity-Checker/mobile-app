@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import DuplicateDataChar from './DuplicateDataChar';
+import DuplicateDataAlerts from './DuplicateDataAlerts';
+import Moment from 'react-moment';
   
 function DuplicateData({match}) {
 
@@ -10,48 +11,34 @@ function DuplicateData({match}) {
     const [data, setData] = useState([
         {
             updates: [{
-                
             }],
-            start: ""
         }
     ]);
 
+    const [device, setDevice] = useState({
+        first_update_time: null
+    });
+
     const fetchData = async () => {
         const fetchData = await fetch(
-            `http://localhost:3000/devices/alertType/duplicate_data/${match.params.id}`
+            `http://localhost:3000/alerts/duplicate_data/${match.params.id}`
+        );
+
+        const fetchDevice = await fetch(
+            `http://localhost:3000/devices/${match.params.id}`
         );
 
         const info = await fetchData.json();
+        const deviceInfo = await fetchDevice.json();
+
         setData(info);
+        setDevice(deviceInfo);
     };
-
-    let hourMap = {};
-
-    data.forEach( update => {
-
-        console.log(new Date(update.start));
-
-        let key = update.start;
-        key = key.substring(5, 13);
-
-        if(hourMap[key] === undefined)
-            hourMap[key] = 1;
-        else
-            hourMap[key] += 1;
-    })
-
-    let hourArray = [];
-
-    // for(let m of hourMap){
-        
-    // }
-
-    //console.log(hourMap);
 
     return (
         <div>
-            <h3>Duplicate Data: {data.length}</h3>
-            <DuplicateDataChar data={hourArray}/>
+            <h3>Duplicate Data: {data.length} Since <Moment>{device.first_update_time}</Moment></h3>
+            <DuplicateDataAlerts data={data} />
         </div>
     );
 };

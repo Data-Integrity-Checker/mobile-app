@@ -13,7 +13,7 @@ function DeviceDetails({match}) {
         location : {
             coordinates: {}
         },
-        battery_history: [{}]
+        battery_history: [{}],
     });
 
     const fetchDetails = async () => {
@@ -25,17 +25,22 @@ function DeviceDetails({match}) {
         setDetails(info);
     };
 
+    console.log(details._id);
+
     return (
         <div>
             <h1>ID: {details._id}</h1>
             <h3>Battery: {details.battery*100}%</h3>
             <hr/>
-            <Map coordinates={details.location.coordinates}/>
+
+            <Map id={match.params.id}/>
+            
             <Battery 
                 battery_history={details.battery_history} 
                 battery={details.battery}
             />
             <h5>Alerts</h5>
+            
         </div>
     );
 };

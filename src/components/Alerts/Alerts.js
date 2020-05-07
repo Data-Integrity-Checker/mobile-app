@@ -13,7 +13,7 @@ function Alerts() {
 
     const fetchAlerts = async () => {
         const fetchAlerts = await fetch(
-            `http://localhost:3000/devices/allAlerts`
+            `http://localhost:3000/alerts/all`
         );
 
         const alerts = await fetchAlerts.json();
