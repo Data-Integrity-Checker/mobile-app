@@ -10,19 +10,19 @@ const device = props => {
             
             <div>ID: {props.device._id}</div>
         
-            <Link to={`/batteryData/${props.device._id}`}>
+            <Link to={`/battery/${props.device._id}`}>
                 <div className="black">Battery: {props.device.battery * 100}%</div>
             </Link>
 
-            <Link to={`/missingData/${props.device._id}`}>
+            <Link to={`/missing_data/${props.device._id}`}>
                 <div className="black">Missing Data Errors: {props.device.missing_data.length}</div>
             </Link>
 
-            <Link to={`/duplicateData/${props.device._id}`}>
+            <Link to={`/duplicate_data/${props.device._id}`}>
                 <div className="black">Duplicate Data: {props.device.duplicate_data.length}</div>
             </Link>
 
-            <Link to={`/gpsErrors/${props.device._id}`}>
+            <Link to={`/gps_errors/${props.device._id}`}>
                 <div className="black">GPS Errors: {props.device.gps_errors.length}</div>
             </Link>
 

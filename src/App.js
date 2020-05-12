@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Rounter, Switch, Route} from 'react-router-dom';
 import Box from '@material-ui/core/Box';
-import Grid from '@material-ui/core/Grid';
 import Navbar from './components/Navbar/Navbar';
 import Devices from './components/Devices/Devices';
 import Settings from './components/Settings/Settings'; 
@@ -69,26 +68,26 @@ class App extends React.Component {
         <div className="App">
           <Navbar alerts={this.state.alerts_number}/>
 
-          <Grid
+          {/* <Grid
             container  
             spacing={0}
             direction="column"
             alignItems="center"
-            style={{ minHeight: '100vh' }} >
+            style={{ minHeight: '100vh' }} > */}
          
          <Box justifyContent="center">
             <Switch>
               <Route path="/" exact component={() => <Devices devices={this.state.devices}/>}/>
               <Route path="/alerts" component={Alerts}/>
               <Route path="/settings" component={Settings}/>
-              <Route path="/batteryData/:id" component={BatteryData}/>
-              <Route path="/missingData/:id" component={MissingData}/>
-              <Route path="/duplicateData/:id" component={DuplicateData}/>
-              <Route path="/gpsErrors/:id" component={GPSErrors}/>
+              <Route path="/battery/:id" component={BatteryData}/>
+              <Route path="/missing_data/:id" component={MissingData}/>
+              <Route path="/duplicate_data/:id" component={DuplicateData}/>
+              <Route path="/gps_errors/:id" component={GPSErrors}/>
             </Switch>
           </Box>
 
-          </Grid>
+          {/* </Grid> */}
 
         </div>
       </Rounter>

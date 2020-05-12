@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DuplicateDataAlerts from './DuplicateDataAlerts';
+import Map from '../Map/Map';
 import Moment from 'react-moment';
   
 function DuplicateData({match}) {
@@ -38,7 +39,9 @@ function DuplicateData({match}) {
     return (
         <div>
             <h3>Duplicate Data: {data.length} Since <Moment>{device.first_update_time}</Moment></h3>
+            <Map id={match.params.id}/>
             <DuplicateDataAlerts data={data} />
+            
         </div>
     );
 };
